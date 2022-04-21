@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <div class="input">
+            属性名: <input type="text" name="" id="" value="background" class="q1">
+            <br>
+            属性值: <input type="text" value="green" class="q2">
+            <br>
+            <button class="b1">确定</button>
+            <button class="b2">重置</button>
+        </div>
+        <div class="boxx">
+            看看改变的样子
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var changeStyle = function (elem, name, value) {
+        elem.style[name] = value
+    }
+    var q1 = document.querySelector('.q1')
+    var q2 = document.querySelector('.q2')
+    var b1 = document.querySelector('.b1')
+    var b2 = document.querySelector('.b2')
+    var boxx = document.querySelector('.boxx')
+
+    b1.onclick = function () {
+        changeStyle(boxx, q1.value, q2.value)
+    }
+    b2.onclick = function () {
+        boxx.style.cssText = ''
+    }
+</script>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        margin: 0 auto;
+    }
+
+    .input {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .boxx {
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        color: #fff;
+        margin: 0 auto;
+    }
+</style>

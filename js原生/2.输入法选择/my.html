@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千钧澄玉宇</title>
+</head>
+
+<body>
+    <div class="box">
+        <button onclick="btn()">输入法</button>
+        <ul>
+            <li>简写</li>
+            <li>拼音</li>
+            <li onclick="onlistt()" id="onlist">关闭</li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+        var ul = document.querySelector('ul')
+        var but = document.querySelector('button')
+        var onlist = document.querySelector('.onlist')
+        var list = document.querySelectorAll('li')
+        // 关闭功能
+        function onlistt(){
+            ul.style.display = "none"
+        }
+        // 点击输入法显示
+        function btn(){
+            if(ul.style.display != 'block'){
+                ul.style.display = 'block'
+            }else{
+                ul.style.display = 'none'
+            }
+        }
+        // 鼠标滑过li时
+        for(var i =0;i<list.length;i++){
+            list[i].onmouseover = function(){
+                this.style.background = "red"
+            }
+            list[i].onmouseout = function(){
+                this.style.background = ""
+            }
+        }
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .box {
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    ul {
+        text-align: center;
+        width: 40px;
+        border: 1px solid #ccc;
+        display: none;
+    }
+</style>

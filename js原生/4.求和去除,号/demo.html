@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千钧澄玉宇</title>
+  </head>
+<body>
+    <div>
+        <input type="text" value="1,2,3"> 输入数字求和数字之间用,分割
+        <br>
+        <button>求和</button> <span id="sum"></span>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    var oinput = document.getElementsByTagName('input')[0]
+    var obutton = document.getElementsByTagName('button')[0]
+    var sum = document.getElementById('sum')
+    oinput.onkeyup = function(){
+        this.value = this.value.replace(/[^(\d)|(,)]/,"")
+    }
+    obutton.onclick = function(){
+        var sums = 0;
+        var oinput = document.getElementsByTagName("input")[0].value.split(",");
+        for(var i in oinput){
+            sums += parseInt(oinput[i])
+        }
+        sum.innerHTML = sums
+    }
+</script>
