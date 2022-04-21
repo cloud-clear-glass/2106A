@@ -30,6 +30,16 @@ const routes = [
     name: 'Submit',
     component: () => import( '../views/submit.vue')
   },
+  {
+    path: '/pending',
+    name: 'Pending',
+    component: () => import( '../views/pending.vue')
+  },
+  {
+    path: '/dcl',
+    name: 'Dcl',
+    component: () => import( '../views/dcl.vue')
+  }
 ]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

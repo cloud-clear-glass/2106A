@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outer">
+        <div id="big">
+            <img src="./image/big_1.jpg" alt="">
+        </div>
+        <img src="./image/small_1.jpg" alt="">
+        <img src="./image/small_2.jpg" alt="">
+        <img src="./image/small_3.jpg" alt="">
+        <img class="clear" src="./image/small_4.jpg" alt="">
+        <img src="./image/small_5.jpg" alt="">
+        <img src="./image/small_6.jpg" alt="">
+        <img src="./image/small_7.jpg" alt="">
+        <img src="./image/small_8.jpg" alt="">
+        <img src="./image/small_9.jpg" alt="">
+        <img src="./image/small_10.jpg" alt="">
+        <img src="./image/small_11.jpg" alt="">        
+    </div>
+</body>
+<style type="text/css">
+    /* 重置带有默认样式的元素 */
+    body,div,img {margin:0;padding:0}
+    html,body {height:100%;background:black;}
+    #outer,img {border-radius:3px;font-size:0;}
+    /* 外层盒子设置 */
+    #outer {border-radius:7px;width:208px;margin:10px auto;padding:8px 8px 10px 10px;background:white;overflow:hidden;zoom:1;}
+    /* 图片样式 */
+    #outer img {float:left;margin:2px 2px 0 0;}
+    #outer img.clear {clear:both;} 
+</style>
+<script>
+    var imgs =document.querySelectorAll('img')
+    var imgz =document.querySelector('#big img')
+    for(var i =0 ;i<imgs.length ;i++){
+        let a =i
+        imgs[a].onmouseover = function(){
+            console.log(imgs[a].src);
+            imgz.src=imgs[a].src
+            imgz.style.width='154px'
+            imgz.style.height='154px'
+        }
+    }
+</script>
+</html>

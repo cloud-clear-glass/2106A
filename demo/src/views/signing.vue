@@ -1,7 +1,7 @@
 <template>
   <div class="signing">
     <div class="header">
-      <img src="../assets/xitongfanhui.png" alt="" />
+      <img src="../assets/logo.png" alt="" />
       <span> 填写签约信息 </span>
       <span></span>
     </div>
@@ -11,40 +11,37 @@
         <li>
           <span class="a">签约机构</span>
           <span class="b">洛西社区卫生服务站</span>
-          <img src="../assets/31fanhui2.png" alt="" />
+          <img src="../assets/logo.png" alt="" />
         </li>
         <li>
           <span class="a">签约团队</span>
           <span class="b">李明明团队</span>
-          <img src="../assets/31fanhui2.png" alt="" />
+          <img src="../assets/logo.png" alt="" />
         </li>
         <li>
           <span class="a">签约医生</span>
           <span class="b">李明明</span>
           <span></span>
-          <!-- <img src="../assets/31fanhui2.png" alt=""> -->
         </li>
         <li>
           <span class="a">服务包</span>
           <span class="b">老人服务包</span>
-          <img src="../assets/31fanhui2.png" alt="" />
+          <img src="../assets/logo.png" alt="" />
         </li>
         <li>
           <span class="a">签约周期</span>
           <span class="b">1年</span>
           <span></span>
-          <!-- <img src="../assets/31fanhui2.png" alt=""> -->
         </li>
         <li>
           <span class="a">生效日期</span>
           <span class="b">2020年09月01日</span>
-          <img src="../assets/31fanhui2.png" alt="" />
+          <img src="../assets/logo.png" alt="" />
         </li>
         <li class="li">
           <span class="a">费用</span>
           <span class="b1">￥120</span>
           <span></span>
-          <!-- <img src="../assets/31fanhui2.png" alt=""> -->
         </li>
         <li>
           <span class="a">备注</span>

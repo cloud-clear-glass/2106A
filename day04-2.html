@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .container {
+            width: 190px;
+            background-color: #999;
+            margin: 0 auto;
+        }
+        .container ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container ul li {
+            width: 50px;
+            line-height: 50px;
+            border: 1px solid #000;
+            margin: 5px;
+            text-align: center;
+            color: #fff;
+            background-color: #333;
+        }
+        .container dl {
+            padding:5px;
+        }
+        .container dt {
+            border: 1px solid #fff;
+            background-color: #e9e9e9;
+        }
+        p{
+            font-size: 12px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+        </ul>
+        <dl>
+            <dt><h4>1月节日</h4><p>元旦：1月1日至3日放假三天</p></dt>
+        </dl>
+    </div>
+</body>
+<script>
+    let month=[
+    "元旦：1月1日至3日放假三天。",
+		"春节：2月2日至8日放假7天。",
+		"妇女节：3月8日妇女节，与我无关。",
+		"清明节：4月3日至5日放假3天",
+		"劳动节：4月30日至5月2日放假3天。",
+		"端午节：6月4日至6日放假3天。",
+		"小暑：7月7日小暑。不放假。",
+		"七夕节：8月6日七夕节。不放假。",
+		"中秋节：9月10日至12日放假3天。",
+		"国庆节：10月1日至7日放假7天。",
+		"立冬：11月8日立冬。不放假。",
+		"艾滋病日:12月1日<br />废除奴隶制国际日:12月2日。"
+    ]
+    let lis=document.querySelectorAll('ul li')
+    let dt=document.querySelector('dl dt')
+    for(let i=0;i<lis.length;i++){
+        let a=i
+        let text=lis[a].innerText
+        lis[a].onmouseover=function(){
+            dt.innerHTML=`<dt><h4>${text}月节日</h4><p>${month[a]}</p></dt>`
+           
+        }
+    }
+</script>
+</html>

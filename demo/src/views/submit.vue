@@ -1,13 +1,13 @@
 <template>
   <div class="submit">
     <div class="header">
-      <img src="../assets/xitongfanhui.png" alt="" />
+      <img src="../assets/logo.png" alt="" />
       <span> 结果 </span>
       <span></span>
     </div>
     <div class="box">
       <div class="a">
-        <img src="../assets/submit.png" alt="" />
+        <img src="../assets/logo.png" alt="" />
         <p class="a1">提交成功，等待居民支付</p>
         <p class="a2">签约信息已提交，居民支付后可完成签约</p>
       </div>

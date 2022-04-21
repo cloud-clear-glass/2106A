@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+          <p onclick="dj()"> <span>播放列表...</span>  <span class="sss">▲</span></p>
+           <li>213312</li>
+           <li>21</li>
+           <li>213</li>
+           <li>21331</li>
+           <li>21331</li>
+    </div>
+</body>
+<style>
+ .box{
+     /* display: flex; */
+     justify-content:space-between;
+     padding: 10px;
+     background: #ccc;
+     width: 200px;
+ }
+ li{
+     display: none;
+ }
+ .sss{
+     float: right;
+ }
+</style>
+<script>
+    var lis =document.querySelectorAll('li')
+    var zt=true
+    function dj(){
+        zt=!zt
+
+        lis.forEach(item=>{
+            if(zt){
+                item.style.display='block';
+            }else{
+                item.style.display='none';
+            }
+        })
+    }
+</script>
+</html>
