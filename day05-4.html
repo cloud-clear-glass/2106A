@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+     <input type="text" class="s1"> + <input type="text" class="s2"> =<span>?</span><button onclick="qh()">求和</button>
+    
+    
+</body>
+</html>
+<script>
+ var input1=document.querySelector('.s1')
+ var input2=document.querySelector('.s2')
+ var val=document.querySelector('span')
+ function qh (){
+     let a =input1.value
+    //  console.log(a);
+    let b =input2.value
+    val.innerHTML=a - -b
+ }
+</script>
+<style>
+    input{
+        width: 30px;
+    }
+</style>

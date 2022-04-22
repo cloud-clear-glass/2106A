@@ -39,7 +39,17 @@ const routes = [
     path: '/dcl',
     name: 'Dcl',
     component: () => import( '../views/dcl.vue')
-  }
+  },
+  {
+    path: '/sign',
+    name: 'Sign',
+    component: () => import( '../views/sign.vue')
+  },
+  {
+    path: '/reviewed',
+    name: 'Reviewed',
+    component: () => import( '../views/reviewed.vue')
+  },
 ]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

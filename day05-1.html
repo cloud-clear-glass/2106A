@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <li><input class="all" type="checkbox" onchange="all1()"><span class="s1">全选</span><span
+                style="color: greenyellow;">反选</span></li>
+        <li><input class="che" type="checkbox"><span>选项1</span><span>（1）</span></li>
+        <li><input class="che" type="checkbox"><span>选项2</span><span>（2）</span></li>
+        <li><input class="che" type="checkbox"><span>选项3</span><span>（3）</span></li>
+        <li><input class="che" type="checkbox"><span>选项4</span><span>（4）</span></li>
+        <li><input class="che" type="checkbox"><span>选项5</span><span>（5）</span></li>
+        <li><input class="che" type="checkbox"><span>选项6</span><span>（6）</span></li>
+        <li><input class="che" type="checkbox"><span>选项7</span><span>（7）</span></li>
+        <li><input class="che" type="checkbox"><span>选项8</span><span>（8）</span></li>
+        <li><input class="che" type="checkbox"><span>选项9</span><span>（9）</span></li>
+    </div>
+</body>
+
+</html>
+<script>
+    var allche = document.querySelector('.all')
+    var s1 = document.querySelector('.s1')
+    var check = document.querySelectorAll('.che')
+    var zt = false
+
+    function all1() {
+        // console.log(check.this);
+        // console.log(allche.checked);
+        check.forEach(item => {
+            item.checked = allche.checked
+        })
+        if (allche.checked == false) {
+            s1.innerHTML = '全选'
+        } else {
+            s1.innerHTML = '全不选'
+        }
+    }
+    for (var i = 0; i < check.length; i++) {
+        let a = i
+        // console.log(check);
+        check[a].onclick = function () {
+            // if (check[a].checked == false) {
+            //     s1.innerHTML = '11'
+            // } else {
+            //     s1.innerHTML = '全不选'
+            // }
+            if(check[a].checked ){
+                check[a].checked=true
+            }else{
+                check[a].checked=false
+            }
+            // allche.checked=check.every((item)=>item.checked)
+        }
+    }
+</script>

@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outer">
+        <h2>车标展示</h2>
+        <ul>
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="././1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+            <li><a href="#" title="lambojini 兰博基尼"><strong>lambojini</strong>兰博基尼</a>
+            <img src="./1.jpg" alt="兰博"></li>
+            
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var lis =document.querySelectorAll('li')
+    var imgs =document.querySelectorAll('img')
+    for (let index = 0; index < lis.length; index++) {
+       let a=index
+       lis[a].onmouseover=function(){
+      imgs[a].style.display='block'
+       }
+       lis[a].onmouseout=function(){
+      imgs[a].style.display='none'
+       } 
+    }
+    console.log(lis);
+
+</script>
+<style>
+     body,div,h2,ul,li {margin:0; padding:0}
+        body {font:12px/1.5 Tahoma;}
+        ul {list-style-type:none;}
+        #outer {width:560px;margin:0 auto;border:1px solid black;padding:0 0 10px 10px}
+        #outer h2 {line-height:30px;text-align:center;margin-top:10px;}
+        /* 这里使用after伪类进行清浮动，因为ul没有相邻元素，需要临时制造一个元素进行浮动清除。 */
+        #outer ul:after {content:".";display:block;clear:left;visibility:hidden;height:0;}
+        #outer ul {zoom:1}
+        /* 典型相对定位-绝对定位布置，即，块内元素*/
+        #outer ul li {position:relative;float:left;border:1px solid black;margin:10px 10px 0 0;}
+        #outer ul li img {position:absolute;border:2px solid black;cursor:crosshair;top:-14px;left:-14px;display:none;}
+        /* 将a元素转为块元素，方便涉及宽高等属性 */
+        #outer ul li a {display:block;color:black;width:80px;height:80px;padding:10px;background:#f0f0f0;text-decoration:none;}
+        /* 将文本改为块元素 */
+        #outer ul li a strong {display:block;}
+        /* 用于提升当前提示框的层次 */
+        .zindex {z-index:1;}
+</style>

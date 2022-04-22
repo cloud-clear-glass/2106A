@@ -16,6 +16,7 @@ setup(){}
 .mytitle{
     width: 100%;
     height: 50px;
+    box-sizing: border-box;
     display: flex;
     padding: 0 10px;
     background-color: #fff;
