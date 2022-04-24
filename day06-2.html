@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        input {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text">vs <input type="text">
+        <button>最大的数是</button>
+        <span style="color:red"></span>
+    </div>
+</body>
+<script>
+    let input = document.querySelectorAll("input");
+    let btn = document.querySelector('button')
+    let span = document.querySelector('span')
+    btn.onclick = function () {
+        span.innerHTML = Math.max(input[0].value, input[1].value)
+    }
+</script>
+
+</html>
