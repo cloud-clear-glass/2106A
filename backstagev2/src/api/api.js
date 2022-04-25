@@ -1,12 +1,14 @@
 import axios from 'axios'
 import env from './env'
 import { Message } from 'element-ui'
+import router from '../router/index'
 const api = axios.create({
     baseURL: env.prod.baseURL,
     timeout: 5000
 })
 // 请求拦截
 api.interceptors.request.use((config) => {
+    config.headers.Authorization = sessionStorage.getItem('token')
     return config
 }, error => {
     return Promise.reject(error)
@@ -15,7 +17,9 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use((res) => {
     const code = [200, 201, 204]
     const { data: result, meta: { msg, status } } = res.data
-    console.log(res)
+    if (msg === '无效token') {
+        router.replace('/login')
+    }
     // 判断状态
     if (code.includes(status)) {
         Message({

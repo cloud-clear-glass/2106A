@@ -10,17 +10,43 @@ const routes = [
     redirect: '/login'
   },
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
-    component: Home
+    meta: {
+      auth: true
+    },
+    component: () => import('../views/Home.vue'),
+    children: [
+      {
+        path: '/users',
+        name: 'Users',
+        component: () => import('../views/users.vue')
+      },
+      {
+        path: '/roles',
+        name: 'Roles',
+        component: () => import('../views/roles.vue')
+      },
+      {
+        path: '/rights',
+        name: 'Rights',
+        component: () => import('../views/rights.vue')
+      },
+    ]
   },
   {
     path: '/about',
+    meta: {
+      auth: true
+    },
     name: 'About',
     component: () => import('../views/About.vue')
   },
   {
     path: '/login',
+    meta: {
+      auth: false
+    },
     name: 'Login',
     component: () => import('../views/login')
   },
@@ -29,5 +55,18 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach((to, form, next) => {
+  const flag = to.matched.some((item) => item.meta.auth)
+  if (flag) {
+    const token = sessionStorage.getItem('token')
+    if (!token) {
+      next({
+        path: '/login'
+      })
+    }
+    next()
+  } else {
+    next()
+  }
+})
 export default router
