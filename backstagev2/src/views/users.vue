@@ -78,7 +78,7 @@
         </el-pagination>
       </div>
       <div>
-        <!-- 添加用户弹窗已经修改用户弹窗 二合一 -->
+        <!-- 添加用户弹窗以及修改用户弹窗 二合一 -->
         <el-dialog
           :title="isRuleForm ? '添加用户' : '编辑用户'"
           :visible.sync="dialogVisible"

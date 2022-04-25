@@ -28,7 +28,7 @@
           </el-form-item>
           <el-form-item class="login_btns">
             <el-button type="primary" @click="submit">登录</el-button>
-            <el-button type="info">重置</el-button>
+            <el-button type="info" @click="resetForm">重置</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -74,6 +74,10 @@ export default {
         const res = await getToken(this.ruleForm)
         this.$router.push('/home')
       })
+    },
+    // 重置
+    resetForm() {
+      this.$refs.ruleForm.resetFields()
     }
   }
 }
