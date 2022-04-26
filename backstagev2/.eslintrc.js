@@ -17,6 +17,7 @@ module.exports = {
     'comma-dangle': 0,
     'indent': 0,
     'no-unused-vars': 0,
-    'vue/no-unused-vars': 0
+    'vue/no-unused-vars': 0,
+    'prefer-const': 0
   }
 }

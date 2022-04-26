@@ -2,9 +2,15 @@ import Vue from 'vue'
 import {
     Button, Form, FormItem, Input, Row, Col, MessageBox, Radio, RadioGroup, RadioButton
     , Menu, Submenu, MenuItem, MenuItemGroup, Breadcrumb, BreadcrumbItem, Container, Header, Aside, Main, Card,
-    Table, TableColumn, Switch, Pagination, Dialog, Select, Option
+    Table, TableColumn, Switch, Pagination, Dialog, Select, Option, Checkbox, CheckboxButton, CheckboxGroup, Tree
+    , Tag
 } from 'element-ui'
 
+Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Checkbox)
+Vue.use(CheckboxButton)
+Vue.use(CheckboxGroup)
 Vue.use(Option)
 Vue.use(Select)
 Vue.use(Dialog)

@@ -42,18 +42,21 @@
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
+              <!-- 修改 -->
               <el-button
                 type="primary"
                 icon="el-icon-edit"
                 size="mini"
                 @click="handleEdit(scope.row)"
               ></el-button>
+              <!-- 删除 -->
               <el-button
                 type="danger"
                 icon="el-icon-delete"
                 size="mini"
                 @click="handleDelete(scope.row)"
               ></el-button>
+              <!-- 操作 -->
               <el-button
                 type="warning"
                 icon="el-icon-s-tools"
@@ -285,14 +288,14 @@ export default {
           email: this.ruleForm.email,
           mobile: this.ruleForm.mobile
         })
-        this.dialogVisible = false
-        this.getData()
         this.ruleForm = {
           username: '',
           password: '',
           email: '',
           mobile: ''
         }
+        this.dialogVisible = false
+        this.getData()
       }
     },
     // 点击改变状态
@@ -303,8 +306,14 @@ export default {
     open() {
       this.dialogVisible = true
       this.isRuleForm = true
+      this.ruleForm = {
+        username: '',
+        password: '',
+        email: '',
+        mobile: ''
+      }
     },
-    // 编辑用户
+    // 打开编辑用户模态框
     handleEdit(val) {
       // console.log(val)
       this.dialogVisible = true

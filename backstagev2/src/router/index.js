@@ -32,6 +32,21 @@ const routes = [
         name: 'Rights',
         component: () => import('../views/rights.vue')
       },
+      {
+        path: '/goods',
+        name: 'Goods',
+        component: () => import('../views/goods.vue')
+      },
+      {
+        path: '/params',
+        name: 'Params',
+        component: () => import('../views/params.vue')
+      },
+      {
+        path: '/categories',
+        name: 'Categories',
+        component: () => import('../views/categories.vue')
+      },
     ]
   },
   {

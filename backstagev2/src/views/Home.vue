@@ -15,13 +15,11 @@
           <!-- 侧边栏 -->
           <div style="height: 100%">
             <div
-              style="height: 40px; width: 100%; background: #4a5064"
+              style="height: 30px; width: 100%; background: #4a5064"
               class="left_title"
+              @click="isCollapse = !isCollapse"
             >
-              <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-                <el-radio-button :label="false">展开</el-radio-button>
-                <el-radio-button :label="true">收起</el-radio-button>
-              </el-radio-group>
+              <p style="color: #fff">|||</p>
             </div>
             <el-menu
               :collapse="isCollapse"
@@ -140,7 +138,9 @@ export default {
 }
 .left_title {
   display: flex;
+  justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .el-radio-group {
   margin-bottom: 0 !important;
