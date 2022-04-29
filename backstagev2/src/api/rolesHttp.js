@@ -49,3 +49,10 @@ export const getrightData = () => {
         method: 'GET',
     })
 }
+// 删除单个权限
+export const removeApi = (roleId, rightId) => {
+    return api({
+        url: `roles/${roleId}/rights/${rightId}`,
+        method: 'DELETE',
+    })
+}

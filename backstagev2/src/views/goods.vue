@@ -1,6 +1,7 @@
 <template>
   <div class="goods">
-    <el-card>
+    <el-card class="mt">
+      <router-view></router-view>
       <!-- 搜索和添加 -->
       <div style="margin-top: 15px">
         <el-row :gutter="12">
@@ -9,13 +10,15 @@
               clearable
               v-model="quyerInfo.query"
               placeholder="请输入内容"
+              @clear="seach"
               class="input-with-select"
             >
-              <el-button slot="append" icon="el-icon-search"></el-button>
+              <el-button slot="append" icon="el-icon-search" @click="seach">
+              </el-button>
             </el-input>
           </el-col>
           <el-col :span="10">
-            <el-button type="primary">添加用户</el-button>
+            <el-button type="primary" @click="handlebtn">添加商品</el-button>
           </el-col>
         </el-row>
       </div>
@@ -27,17 +30,19 @@
           <el-table-column
             label="商品价格(元)"
             prop="goods_price"
+            width="110px"
           ></el-table-column>
           <el-table-column
-            label="商品数量"
+            label="商品重量"
             prop="goods_number"
+            width="80px"
           ></el-table-column>
-          <el-table-column label="创建时间">
+          <el-table-column label="创建时间" width="160px">
             <template slot-scope="scope">
-              {{ new Date(scope.row.add_time).toLocaleString() | time }}
+              {{ new Date(scope.row.add_time * 1000).toLocaleString() | data }}
             </template>
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column label="操作" width="120px">
             <template slot-scope="scope">
               <!-- 修改 -->
               <el-button
@@ -90,25 +95,27 @@ export default {
     }
   },
   methods: {
-    handleSizeChange(val) {},
-    handleCurrentChange() {},
+    handleSizeChange(val) {
+      this.quyerInfo.pagesize = val
+      this.getData()
+    },
+    handleCurrentChange(val) {
+      this.quyerInfo.pagenum = val
+      this.getData()
+    },
     // 获取商品列表数据
     async getData() {
       const res = await getGoodsData(this.quyerInfo)
       this.total = res.total
       this.tableData = res.goods
       //   console.log(new Date(this.tableData[0].add_time).toLocaleString())
-    }
-  },
-  filters: {
-    time: function (val) {
-      let arr = val.split('')
-
-      arr.splice(4, 1, '-')
-      arr.splice(5, 0, '0')
-      arr.splice(7, 1, '-')
-      console.log(arr.join(''))
-      return arr.join('')
+    },
+    handlebtn() {
+      this.$router.push('/add')
+    },
+    // 搜索
+    seach() {
+      this.getData()
     }
   },
   created() {

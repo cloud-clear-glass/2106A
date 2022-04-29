@@ -18,30 +18,52 @@
       >
         <el-table-column type="expand">
           <template slot-scope="props">
-            <el-tag
-              v-for="(item, index) in props.row.children"
-              :key="index"
-              closable
-              effect="dark"
-            >
-              {{ item.authName }}
-              <el-tag
-                v-for="(it, i) in item.children"
-                :key="i"
-                closable
-                effect="plain"
+            <div class="roles_box" v-if="props.row.children.length > 0">
+              <el-row
+                v-for="item1 in props.row.children"
+                :key="item1.id"
+                class="roles_box_top"
               >
-                {{ it.authName }}
-                <el-tag
-                  v-for="(el, j) in it.children"
-                  :key="j"
-                  closable
-                  effect="light"
-                >
-                  {{ el.authName }}
-                </el-tag>
-              </el-tag>
-            </el-tag>
+                <el-col :span="4">
+                  <el-tag
+                    closable
+                    effect="dark"
+                    @close="removeRoles(props.row, item1.id)"
+                  >
+                    {{ item1.authName }}
+                  </el-tag>
+                </el-col>
+                <el-col :span="20">
+                  <el-row
+                    v-for="item2 in item1.children"
+                    :key="item2.id"
+                    class="roles_box2"
+                  >
+                    <el-col :span="4">
+                      <el-tag
+                        closable
+                        type="success"
+                        @close="removeRoles(props.row, item2.id)"
+                      >
+                        {{ item2.authName }}
+                      </el-tag>
+                    </el-col>
+                    <el-col :span="20">
+                      <el-tag
+                        v-for="item3 in item2.children"
+                        :key="item3.id"
+                        closable
+                        type="warning"
+                        @close="removeRoles(props.row, item3.id)"
+                      >
+                        {{ item3.authName }}
+                      </el-tag>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
+            </div>
+            <div v-else class="roles_box">该角色暂无权限</div>
           </template>
         </el-table-column>
         <el-table-column label="#" type="index"> </el-table-column>
@@ -100,7 +122,12 @@
       </el-form>
     </el-dialog>
     <!-- 分配权限 -->
-    <el-dialog title="分配权限" :visible.sync="dialog" width="40%">
+    <el-dialog
+      title="分配权限"
+      :visible.sync="dialog"
+      width="40%"
+      :before-close="handleClose"
+    >
       <el-tree
         ref="tree"
         default-expand-all
@@ -108,6 +135,7 @@
         show-checkbox
         node-key="id"
         :props="defaultProps"
+        :default-checked-keys="checkedArr"
       >
       </el-tree>
       <span slot="footer" class="dialog-footer">
@@ -126,7 +154,8 @@ import {
   editRolesApi,
   deleteRolesApi,
   getRightsApi,
-  ADDRolesApi
+  ADDRolesApi,
+  removeApi
 } from '../api/rolesHttp'
 export default {
   data() {
@@ -174,7 +203,8 @@ export default {
         children: 'children',
         label: 'authName'
       },
-      editRoleseId: '' // 修改角色的id
+      editRoleseId: '', // 修改角色的id
+      checkedArr: [] // 默认勾选的数组
     }
   },
   methods: {
@@ -245,13 +275,27 @@ export default {
     async getRights() {
       const res = await getRightsApi()
       this.rightsData = res
-      console.log(res)
+      // console.log(res)
     },
     // 打开分配权限列表
     openTools(val) {
-      console.log(val)
-      this.dialog = true
+      // console.log(val)
+
       this.editRoleseId = val.id
+      this.getChecked(val, this.checkedArr)
+      this.dialog = true
+    },
+    // 获取默认选中的方法
+    getChecked(val, arr) {
+      // if (val.children) {
+      //   val.children.forEach((item) => this.getChecked(item, arr))
+      // } else {
+      //   return arr.push(val.id)
+      // }
+      if (!val.children) {
+        return arr.push(val.id)
+      }
+      val.children.forEach((item) => this.getChecked(item, arr))
     },
     // 修改分配权限
     async editRoles() {
@@ -262,8 +306,36 @@ export default {
       // arr2全选中
       let arr2 = this.$refs.tree.getHalfCheckedKeys()
       const res = await ADDRolesApi(this.editRoleseId, arr1, arr2)
-      this.dialog = false
       this.getData()
+      this.dialog = false
+    },
+    // 关闭弹出框的回调
+    handleClose() {
+      this.checkedArr = []
+      this.$nextTick(function () {
+        // Dom更新完毕
+        this.$refs.tree.setCheckedKeys([])
+      })
+      this.dialog = false
+    },
+    // 删除单个权限
+    removeRoles(row, rightId) {
+      MessageBox.alert('此操作将删除该权限, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        showCancelButton: true
+      })
+        .then(async () => {
+          const res = await removeApi(row.id, rightId)
+          row.children = res
+        })
+        .catch(() => {
+          Message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
     }
   },
 
@@ -275,8 +347,33 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.roles_box_top {
+  border: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .el-col {
+    border-left: 1px solid #eee;
+    &:first-child {
+      border-left: 0px;
+    }
+  }
+}
+
+.roles_box2 {
+  border-bottom: 0px !important;
+  &:nth-of-type(2) {
+    border-top: 1px solid #eee;
+  }
+}
 .form_btn {
   display: flex;
   justify-content: flex-end;
+}
+.el-tag {
+  margin: 8px;
+}
+.roles_box {
+  padding: 20px 10px;
 }
 </style>

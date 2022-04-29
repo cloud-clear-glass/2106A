@@ -3,7 +3,7 @@ import env from './env'
 import { Message } from 'element-ui'
 import router from '../router/index'
 const api = axios.create({
-    baseURL: env.prod.baseURL,
+    baseURL: env.http.baseURL,
     timeout: 5000
 })
 // 请求拦截

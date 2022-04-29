@@ -3,9 +3,16 @@ import {
     Button, Form, FormItem, Input, Row, Col, MessageBox, Radio, RadioGroup, RadioButton
     , Menu, Submenu, MenuItem, MenuItemGroup, Breadcrumb, BreadcrumbItem, Container, Header, Aside, Main, Card,
     Table, TableColumn, Switch, Pagination, Dialog, Select, Option, Checkbox, CheckboxButton, CheckboxGroup, Tree
-    , Tag
+    , Tag, Alert, Steps, Step, Tabs, TabPane, Cascader, Upload
 } from 'element-ui'
 
+Vue.use(Upload)
+Vue.use(Cascader)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(Alert)
 Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Checkbox)
