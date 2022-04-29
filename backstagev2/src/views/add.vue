@@ -101,8 +101,20 @@
               </div>
             </el-upload>
           </el-tab-pane>
-          <el-tab-pane label="商品内容">商品内容</el-tab-pane>
-          <el-tab-pane label="完成">完成</el-tab-pane>
+          <el-tab-pane label="商品内容">
+            <template>
+              <div class="edit_container">
+                <quill-editor
+                  v-model="ruleForm.goods_introduce"
+                  ref="myQuillEditor"
+                >
+                </quill-editor>
+              </div>
+              <el-button type="primary" @click="addCate" class="mt"
+                >添加商品</el-button
+              >
+            </template>
+          </el-tab-pane>
         </el-tabs>
       </el-form>
     </el-card>
@@ -111,7 +123,7 @@
 
 <script>
 import { Message } from 'element-ui'
-import { getParamsApi, getmanyData } from '../api/goodsHttp'
+import { getParamsApi, getmanyData, addGoodsCateApi } from '../api/goodsHttp'
 export default {
   data() {
     return {
@@ -137,8 +149,7 @@ export default {
       rules: {
         // 验证
         goods_name: [
-          { required: true, message: '请输入商品名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          { required: true, message: '请输入商品名称', trigger: 'blur' }
         ],
         goods_cat: [{ required: true, message: '请选择', trigger: 'blur' }],
         goods_price: [
@@ -154,6 +165,11 @@ export default {
     }
   },
   methods: {
+    editorOption() {
+      // @blur="onEditorBlur($event)"
+      //             @focus="onEditorFocus($event)"
+      //             @change="onEditorChange($event)"
+    },
     // 选中联级选择器
     handleChange() {
       if (this.value.length < 3) {
@@ -175,7 +191,6 @@ export default {
       if (this.value.length < 3) {
         return false
       }
-      console.log(this.value)
     },
     // 点击tab时获取动态参数和静态参数
     async handleClick() {
@@ -216,6 +231,28 @@ export default {
     handlesuccess(res) {
       console.log(res)
       this.ruleForm.pics.push({ pic: res.data.tmp_path })
+    },
+    // 添加商品信息
+    async addCate() {
+      this.ruleForm.goods_cat = this.value.join(',')
+      // 处理动态参数和静态参数
+      const arr1 = this.manyData.map((item) => {
+        return {
+          attr_id: item.attr_id,
+          attr_value: item.attr_vals ? item.attr_vals.join(',') : ''
+        }
+      })
+      const arr2 = this.onlyData.map((item) => {
+        return {
+          attr_id: item.attr_id,
+          attr_value: item.attr_vals
+        }
+      })
+      // console.log(arr1)
+      this.ruleForm.attrs = [...arr1, ...arr2]
+      // 发送添加请求
+      await addGoodsCateApi(this.ruleForm)
+      this.$router.push('/goods')
     }
   },
   created() {
@@ -227,5 +264,8 @@ export default {
 <style scoped lang="scss">
 ::v-deep .el-step__title {
   font-size: 12px;
+}
+::v-deep .ql-editor {
+  height: 300px;
 }
 </style>

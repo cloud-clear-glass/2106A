@@ -8,10 +8,11 @@ export const getGoodsData = (params) => {
     })
 }
 // 获取商品分类数据列表
-export const getParamsApi = () => {
+export const getParamsApi = (params) => {
     return api({
         url: 'categories',
         method: 'GET',
+        params
     })
 }
 // 获取商品动态参数
@@ -20,5 +21,13 @@ export const getmanyData = (id, many = 'many') => {
         url: `categories/${id}/attributes`,
         method: 'GET',
         params: { sel: many }
+    })
+}
+// 添加商品
+export const addGoodsCateApi = (data) => {
+    return api({
+        url: 'goods',
+        method: 'POST',
+        data
     })
 }

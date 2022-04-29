@@ -4,8 +4,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './plugins/element.js'
+import VueQuillEditor from 'vue-quill-editor'
 // 时间格式化插件
 import moment from 'moment'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
+Vue.use(VueQuillEditor, /* { default global options } */)
 Vue.config.productionTip = false
 Vue.filter('data', function (val) {
   return moment(val).format('YYYY-MM-DD hh:mm:ss')
