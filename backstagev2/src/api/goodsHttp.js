@@ -31,3 +31,17 @@ export const addGoodsCateApi = (data) => {
         data
     })
 }
+// 修改商品
+export const eiditGoodsApi = (id, data) => {
+    return api({
+        url: `goods/${id}`,
+        method: 'PUT',
+        data
+    })
+}
+export const deleteGoodsApi = (data) => {
+    return api({
+        url: `goods/${data}`,
+        method: 'DELETE',
+    })
+}

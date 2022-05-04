@@ -5,7 +5,7 @@ import router from '../router/index'
 import NProgress from 'nprogress'
 
 const api = axios.create({
-    baseURL: env.http.baseURL,
+    baseURL: env.prod.baseURL,
     timeout: 5000
 })
 // 请求拦截

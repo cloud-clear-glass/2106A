@@ -6,23 +6,23 @@
       </div>
       <div class="count">
         <el-form
-          ref="ruleForm"
+          ref="ruleFormRef"
           :model="ruleForm"
           :rules="ruleForm.rules"
           label-width="120px"
           class="demo-ruleForm"
         >
-          <el-form-item label="用户名" prop="name">
-            <el-input v-model="ruleForm.name" />
+          <el-form-item label="用户名" prop="username">
+            <el-input v-model="ruleForm.username" />
           </el-form-item>
-          <el-form-item label="密码" prop="psw">
-            <el-input v-model="ruleForm.psw" />
+          <el-form-item label="密码" prop="password">
+            <el-input v-model="ruleForm.password" />
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm(ruleForm)"
               >登录</el-button
             >
-            <el-button @click="resetForm(ruleFormRef)">重置</el-button>
+            <el-button @click="resetForm()">重置</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -30,58 +30,55 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive, toRefs } from "vue";
-export default {
-  setup() {
-    const ruleForm = reactive({
-      name: "admin",
-      psw: "123456",
-      rules: {
-        name: [
-          {
-            required: true,
-            message: "请输入正确的用户名",
-            trigger: "blur",
-          },
-          {
-            min: 3,
-            max: 5,
-            message: "请输入正确的用户名，长度在3-5位",
-            trigger: "blur",
-          },
-        ],
-        psw: [
-          {
-            required: true,
-            message: "请输入正确格式的密码",
-            trigger: "blur",
-          },
-          {
-            min: 6,
-            max: 6,
-            message: "请输入正确格式的密码，长度在6位",
-            trigger: "blur",
-          },
-        ],
+import { gologin } from "../api/http";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const ruleForm = reactive({
+  username: "admin",
+  password: "123456",
+  rules: {
+    username: [
+      {
+        required: true,
+        message: "请输入正确的用户名",
+        trigger: "blur",
       },
-    });
-    const submitForm = async (formEl) => {
-        // console.log(formEl);
-      if (!formEl) return;
-      await formEl.validate((valid, fields) => {
-        if (valid) {
-          console.log("valid");
-        } else {
-        //   console.log("error submit!", fields);
-        }
-      });
-    };
-    return {
-      ruleForm,
-      submitForm,
-    };
+      {
+        min: 3,
+        max: 5,
+        message: "请输入正确的用户名，长度在3-5位",
+        trigger: "blur",
+      },
+    ],
+    password: [
+      {
+        required: true,
+        message: "请输入正确格式的密码",
+        trigger: "blur",
+      },
+      {
+        min: 6,
+        max: 6,
+        message: "请输入正确格式的密码，长度在6位",
+        trigger: "blur",
+      },
+    ],
   },
+});
+const submitForm = async (formEl) => {
+  if (!formEl) return;
+  const res = await gologin(ruleForm);
+  if (res.token !== "") {
+    localStorage.setItem("token", res.token);
+    router.push("/home");
+  }
+};
+const resetForm = () => {
+  ruleForm.username = "admin";
+  ruleForm.password = "123456";
 };
 </script>
 <style lang="scss" scoped>
