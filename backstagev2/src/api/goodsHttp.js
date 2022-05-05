@@ -45,3 +45,30 @@ export const deleteGoodsApi = (data) => {
         method: 'DELETE',
     })
 }
+// 添加动态参数子参数
+export const editcategoriesApi = (id, attrId, name, type, vals) => {
+    return api({
+        url: `categories/${id}/attributes/${attrId}`,
+        method: 'PUT',
+        data: {
+            attr_name: name,
+            attr_sel: type,
+            attr_vals: vals
+        }
+    })
+}
+// 添加动态参数
+export const addcategoriesApi = (id, data) => {
+    return api({
+        url: `categories/${id}/attributes`,
+        method: 'POST',
+        data
+    })
+}
+// 删除动态参数
+export const handleDeleteApi = (id, attrid) => {
+    return api({
+        url: `categories/${id}/attributes/${attrid}`,
+        method: 'DELETE'
+    })
+}
