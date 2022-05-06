@@ -3,9 +3,11 @@ import {
     Button, Form, FormItem, Input, Row, Col, MessageBox, Radio, RadioGroup, RadioButton
     , Menu, Submenu, MenuItem, MenuItemGroup, Breadcrumb, BreadcrumbItem, Container, Header, Aside, Main, Card,
     Table, TableColumn, Switch, Pagination, Dialog, Select, Option, Checkbox, CheckboxButton, CheckboxGroup, Tree
-    , Tag, Alert, Steps, Step, Tabs, TabPane, Cascader, Upload
+    , Tag, Alert, Steps, Step, Tabs, TabPane, Cascader, Upload, Timeline, TimelineItem
 } from 'element-ui'
 
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 Vue.use(Upload)
 Vue.use(Cascader)
 Vue.use(Tabs)

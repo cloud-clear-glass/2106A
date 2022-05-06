@@ -219,9 +219,11 @@ export default {
       if (this.value.length !== 3) {
         Message.error('请选择到三级分类')
         this.value = []
+        this.tableData = []
         return false
       }
       if (this.activeName === 'many') {
+        this.tableData = []
         const res = await getmanyData(this.value[this.value.length - 1])
         res.forEach((item, index) => {
           item.inputVisible = this.inputVisible
@@ -300,6 +302,7 @@ export default {
       this.isDialog = 1
       this.dialogVisible = true
     },
+    // 添加和编辑
     async addParmas() {
       // 添加分类
       if (this.isDialog === 1) {
