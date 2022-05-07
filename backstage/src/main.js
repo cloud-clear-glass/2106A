@@ -8,6 +8,7 @@ import 'element-plus/dist/index.css'
 import * as ElIcons from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import 'nprogress/nprogress.css'
 const app = createApp(App)
 app.component('QuillEditor', QuillEditor)
 for (const name in ElIcons) {

@@ -1,6 +1,6 @@
 <template>
   <div class="reports">
-    <div id="main" style="width: 800px; height: 400px" class="mt"></div>
+    <div id="main" style="width: 50%; height: 30%" class="mt"></div>
   </div>
 </template>
 

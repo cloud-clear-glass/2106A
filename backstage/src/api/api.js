@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import router from '../router/index'
 import env from './env'
-
+import NProgress from 'nprogress'
 const api = axios.create({
     baseURL: env.http.baseURL,
     timeout: 5000
@@ -10,13 +10,14 @@ const api = axios.create({
 // 请求拦截
 api.interceptors.request.use((config) => {
     config.headers.Authorization = localStorage.getItem('token')
+    NProgress.start()
     return config
 }, error => {
     Promise.reject(error)
 })
 // 响应拦截
 api.interceptors.response.use((res) => {
-
+    NProgress.done()
     const code = [200, 201, 204]
     const { data: result, meta: { msg, status } } = res.data
     if (msg === '无效token') {

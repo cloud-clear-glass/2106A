@@ -79,6 +79,7 @@
             v-model="value"
             :options="options"
             ref="cascaderRef"
+            placeholder="请选择商品分类"
             :props="{
               expandTrigger: 'hover',
               label: 'cat_name',
@@ -158,7 +159,7 @@ export default {
     };
     // 级联选择器的函数
     const handleChange = () => {
-      // console.log(data.value);
+      cascaderRef._value.popperVisible = false;
     };
     // 获取权限数据
     const getOptions = async () => {

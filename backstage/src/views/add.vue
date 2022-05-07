@@ -53,6 +53,7 @@
             </el-form-item>
             <el-form-item label="商品分类" prop="goods_cat">
               <el-cascader
+                placeholder="请选择商品分类"
                 v-model="value"
                 :options="options"
                 :props="props"
