@@ -8,9 +8,9 @@ export const addRolesApi = (data) => {
     })
 }
 // 编辑角色
-export const editRolesApi = (data) => {
+export const editRolesApi = (id, data) => {
     return api({
-        url: `roles/${data.id}`,
+        url: `roles/${id}`,
         method: 'PUT',
         data: {
             roleName: data.roleName,
