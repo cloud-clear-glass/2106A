@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mydemo</title>
+	<style>
+		body,div,p,ul,li {margin:0;padding:0;}
+		ul {list-style-type:none;}
+		#box {
+			position:absolute;left:600px;top:100px;
+			width:300px;height:131px;border:1px solid #0ff;color:#0ff;background:#999;			
+		}
+		
+		#top {height:28px;line-height:28px;border-bottom:1px solid #0ff;background:#333;cursor:move;}
+		#top a {float:right;text-decoration:none;color:#0ff;margin-right:10px;}
+		
+		#content li {height:34px;line-height:34px;margin-left:10px;font-weight:400;}
+	</style>
+	<script>
+		window.onload = function() {
+			//选择要拖放的元素，onmousedown
+			var oP = document.getElementById("top");
+			var oBox = document.getElementById("box");
+			var oState = document.getElementById("state");
+			oP.onmousedown = function(ev) {
+				var ev = ev ||　window.event;
+				var oTop = document.getElementById("setTop");
+				var oLeft = document.getElementById("setLeft");
+				
+				var disX = ev.clientX - oBox.offsetLeft;
+				var disY = ev.clientY - oBox.offsetTop;
+			
+			//移动元素,onmousemove
+				oP.onmousemove = function(ev) {
+					var ev = ev || window.event;
+					oBox.style.left = oTop.innerHTML = ev.clientX - disX + "px";
+					oBox.style.top = oLeft.innerHTML = ev.clientY - disY + "px";
+					oState.innerHTML = true;
+					
+					return true;
+
+					
+				}
+				return true;
+				
+			}
+			//释放元素,onmouseup
+			oP.onmouseup = function() {
+				oP.onmousemove = null;
+				oState.innerHTML = false;
+				return true;
+			}
+			//元素回弹
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<p id="top"><a href="#">点击回放拖动轨迹</a></p>
+		<ul id="content">
+			<li>Drag: <span id="state">false</span></li>
+			<li>offsetTop: <span id="setTop">100</span></li>
+			<li>offsetLeft: <span id="setLeft">600</span></li>
+		</ul>
+	</div>
+</body>
+</html>

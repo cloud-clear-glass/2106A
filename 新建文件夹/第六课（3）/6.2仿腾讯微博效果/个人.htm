@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<style type="text/css">
+		html, body, p, input, ul, li {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        li {
+            list-style-type:none;
+        }
+        body {
+            background: #fff;
+        }
+
+        #out {
+            width: 500px;
+            margin: 10px auto;
+            border: 1px solid #000;
+            text-align: center;
+            background: #fff;
+            border-radius: 5px;
+			
+			overflow: hidden;
+        }
+
+        #import {
+            background: #ccc;
+            padding: 0 20px 20px 20px;
+            border-radius: 5px;
+            text-align: left;
+            font: 12px/25px Arial;
+
+            position: relative;
+        }
+        #import p:nth-child(1) {
+            padding: 10px 0;
+            font: 25px/25px Airal;
+        }
+        #anyone {
+            height: 25px;
+            width: 175px;
+            border-radius: 5px;
+            border: none;
+            line-height: 25px;
+            vertical-align: middle;
+        }
+        .image {
+            width: 25px;
+            height: 25px;
+            margin-right: 5px;
+            vertical-align: middle;
+            opacity: 0.5;
+        }
+
+        .image:hover {
+            opacity: 1.0;
+			cursor: pointer;
+        }
+        #import textarea {
+            border: none;
+            resize: none;
+            margin: 10px 0 40px 0;
+            border-radius: 5px;
+            width: 450px;
+            height: 70px;
+            line-height: 23px;
+        }
+
+        #import p:nth-last-child(2) {
+            position: absolute;
+            bottom: 25px;
+            right: 120px;
+
+            width: 200px;
+            height: 30px;
+            text-align: right;
+            letter-spacing: 2px;
+        }
+        #import p:nth-last-child(2) .num {
+            font-size: 20px;
+            word-spacing: 7px;
+            vertical-align: text-top
+        }
+        #import button {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            width: 70px;
+
+            height: 30px;
+            vertical-align: middle;
+            font: 15px/30px Arial;
+        }
+
+        /* 插入内容的样式 */
+		#export {
+			width: 480px;
+			margin: 0 auto;
+		}
+		#export li:nth-child(1) {
+			height: 30px;
+			background: #eee;
+			font: 12px/20px Arial;
+			position: relative;
+		}
+		#export li:nth-child(1) span {
+			background: #fff;
+			position: absolute;
+			left: 5px;
+			bottom: 0;
+			
+			width: 100px;
+			height: 25px;
+			line-height: 25px;
+		}
+		
+		.current {
+			width: 480px;
+			/* 高度自适应 */
+			min-height: 70px;
+			height: auto!important;
+			height: 70px;
+			
+			margin: 0 auto;
+			text-align: left;
+			
+			border-bottom: 1px solid #077;
+			
+			
+		}
+		.current div:nth-child(1) {
+			width: 15%;
+			background: #0ff;
+			
+			float: left
+		}
+		.current div img {
+			padding: 10px;			
+		}
+		
+		.current div:nth-child(2) {
+			float: right;
+			width: 83%;
+			padding: 1%;
+			background: #ff0;
+		}
+		.current div:nth-child(2) p{
+			
+		}
+		
+		
+		.current div:nth-child(2) p:nth-child(2) {
+			
+		}
+		.current div:nth-child(2) p:nth-child(3) {
+			
+			
+		}
+		.current div:nth-child(3) {
+			clear: both;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			//控制li标签的增加
+		}
+	</script>
+</head>
+<body>
+    <div id="out">
+        <!-- 人名+说说 -->
+        <div id="import">
+            <p>来，说说你在做什么，想什么</p>
+            <input type="text" id="anyone" />
+            <img src="image\1.gif" class="image" />
+            <img src="image\2.gif" class="image">
+            <img src="image\3.gif" class="image">
+            <img src="image\4.gif" class="image">
+            <img src="image\5.gif" class="image">
+            <img src="image\6.gif" class="image">
+            <img src="image\7.gif" class="image">
+            <img src="image\8.gif" class="image">
+            <textarea></textarea>
+            <p>还能输入<span class="num"> 140 </span>个</p>
+            <button>广播</button>
+        </div>
+
+        <!-- 发布出去的内容 -->
+		<ul id="export">
+			<li><span>大家在说</span></li>				
+		</ul>
+        
+		<div class="current">
+			<div><img src="image\1.gif"></div>
+			<div>
+				<p>拉克丝京东方了就卡死了</p>
+			<p>距离为哦发呢顶峰呢付款</p>
+			<p><a href="#">删除</a></p>
+			</div>
+			<div></div>
+		</div>
+    </div>
+</body>
+</html>

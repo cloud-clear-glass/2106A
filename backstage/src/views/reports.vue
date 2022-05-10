@@ -1,6 +1,6 @@
 <template>
   <div class="reports">
-    <div id="main" style="width: 800px; height: 400px" ref="mychart"></div>
+    <div id="main" style="width: 80%; height: 70%" ref="mychart"></div>
   </div>
 </template>
 
@@ -52,8 +52,8 @@ export default {
       option && myChart.setOption(option);
       //   window.addEventListener("resize", ._value.style.width=70%mychart._value.resize);
       window.onresize = function () {
-        mychart._value.style.width = "80%";
-        mychart._value.style.height = "80%";
+        // mychart._value.style.width = "80%";
+        // mychart._value.style.height = "70%";
         myChart.resize();
       };
     });

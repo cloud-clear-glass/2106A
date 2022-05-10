@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #3e3e3e;
+        }
+        div {
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+            cursor: move;
+            border: 1px solid #888;
+            background: #0ff;
+        }
+        #drag1 {
+            top: 100px;
+            left: 100px;
+        }
+        #drag2 {
+            top: 100px;
+            left: 400px;
+        }
+        /*额外的盒子*/
+        #temp {
+            opacity: 0.3;
+        }
+    </style>
+    <script type="text/javascript">
+        // BOM全局变量
+        var zIndex = 1;
+        window.onload = function() {
+            var oDrag1 = document.getElementById("drag1");
+            var oDrag2 = document.getElementById("drag2");
+            drag(oDrag1);
+            drag(oDrag2);
+
+            function drag(oDrag) {
+                // 此处尽量不要使用var disX = dixY = 0;
+                var disX = 0, disY = 0;
+                oDrag.onmousedown = function(event) {
+                    var event = event || window.event;
+                    // 设置鼠标点击处相对盒子的位置
+                    disX = event.clientX - this.offsetLeft;
+                    disY = event.clientY - this.offsetTop;
+                    // 鼠标点击后创建div
+                    var oTemp = document.createElement("div");
+                    oTemp["id"] = "temp";
+
+                    // 获取样式的兼容:ie和非ie
+                    oTemp.style.left = this.currentStyle ? this.currentStyle["left"] : getComputedStyle(this, null)["left"];
+                    oTemp.style.top = this.currentStyle ? this.currentStyle["top"] : getComputedStyle(this, null)["top"];
+
+                    oTemp.style.zIndex = zIndex++;
+                    document.body.appendChild(oTemp);
+
+                    document.onmousemove = function(event) {
+                        var event = event || window.event;
+                        var iL = event.clientX - disX;
+                        var iT = event.clientY - disY;
+
+                        var maxL = document.documentElement.clientWidth - oDrag.offsetWidth;
+                        var maxT = document.documentElement.clientHeight - oDrag.offsetHeight;
+
+                        iL <= 0 && (iL = 0);
+                        iT <= 0 && (iT = 0);
+                        iL >= maxL && (iL = maxL);
+                        iT >= maxT && (iT = maxT);
+
+                        oTemp.style.left = iL + "px";
+                        oTemp.style.top = iT + "px";
+
+                        return false;
+                    };
+
+                    document.onmouseup = function(event) {
+                        document.onmouseup = null;
+                        document.onmousemove = null;
+                        // 复制临时盒子的样式
+                        oDrag.style.left = oTemp.style.left;
+                        oDrag.style.top = oTemp.style.top;
+                        oDrag.style.zIndex = oTemp.style.zIndex;
+
+                        // 复制完成后，需要将临时盒子移除
+                        document.body.removeChild(oTemp);
+
+                        // 可以不用，主要是为了兼容ie8以下
+                        oDrag.releaseCpature && oDrag.releaseCpature();
+                    }
+                    this.setCapture && this.setCpature();
+
+                    return false;
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="drag1"></div>
+    <div id="drag2"></div>
+</body>
+</html>

@@ -349,6 +349,7 @@ export default {
     const openEdit = (val) => {
       data.isEdit = false;
       data.title1 = "编辑动态参数";
+      data.title2 = "动态参数";
       ruleForm.attr_name = val.attr_name;
       data.editId = val.attr_id;
       data.vals = val.attr_vals.join(",");
@@ -358,6 +359,7 @@ export default {
     const openEdit1 = (val) => {
       data.isEdit = false;
       data.title1 = "编辑静态属性";
+      data.title2 = "静态属性";
       ruleForm.attr_name = val.attr_name;
       data.editId = val.attr_id;
       data.vals = val.attr_vals.join(",");
