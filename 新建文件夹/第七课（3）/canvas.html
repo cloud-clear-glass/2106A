@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas style="width: 800px; height: 500px; border:1px solid #000" id="box"></canvas>
+</body>
+<script>
+    let can = document.querySelector('#box')
+    const context = can.getContext('2d');
+    context.beginPath();
+    context.arc(80, 80, 50, Math.PI / 180 * 0, Math.PI / 180 * 360, false);
+    context.fillStyle = 'pink';
+    context.fill();
+    context.stroke();
+    context.beginPath();
+    context.arc(100, 60, 10, Math.PI / 180 * 0, Math.PI / 180 * 360, false);
+    context.fillStyle = 'green';
+    context.fill();
+    context.stroke();
+    context.beginPath();
+    context.arc(60, 60, 10, Math.PI / 180 * 0, Math.PI / 180 * 360, false);
+    context.fillStyle = 'orange';
+    context.fill();
+    context.stroke();
+    context.beginPath()
+    context.arc(80, 90, 20, Math.PI / 180 * 0, Math.PI / 180 * 180, false);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(140, 30);
+    context.lineTo(140, 120);
+    context.lineTo(280, 120);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(140, 50);
+    context.lineTo(145, 50);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(140, 80);
+    context.lineTo(145, 80);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(140, 100);
+    context.lineTo(145, 100);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(150, 80);
+    context.lineTo(170, 50);
+    context.lineTo(190, 120);
+    context.lineTo(210, 90);
+    context.lineTo(230, 60);
+    context.lineTo(250, 50);
+    context.lineTo(270, 60);
+    context.stroke();
+</script>
+
+</html>

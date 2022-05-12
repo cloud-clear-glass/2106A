@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="box" style="width:800px; height:600px"></canvas>
+</body>
+<script>
+    let cas = document.querySelector('#box')
+    let context = cas.getContext('2d')
+    setInterval(() => {
+
+        context.save();
+
+        context.clearRect(0, 0, cas.width, cas.height);
+        context.translate(100, 60);
+        context.save();
+        // 大圆
+        context.beginPath();
+        context.arc(0, 0, 50, Math.PI / 180 * 0, Math.PI / 180 * 360, false);
+        context.stroke();
+        // 小圆
+        context.beginPath();
+        context.arc(0, 0, 5, Math.PI / 180 * 0, Math.PI / 180 * 360, false);
+        context.stroke();
+        for (let i = 0; i < 12; i++) {
+            // 时针
+            context.rotate(2 * Math.PI / 12);
+            context.beginPath();
+            context.lineWidth = 3;
+
+            context.moveTo(50, 0);
+            context.lineTo(45, 0);
+            context.stroke();
+
+        }
+        // 分针
+        for (let i = 0; i < 60; i++) {
+            context.rotate(2 * Math.PI / 60);
+            context.beginPath();
+            context.lineWidth = 1;
+            context.moveTo(50, 0);
+            context.lineTo(45, 0);
+            context.stroke();
+
+        }
+        // 时
+        let day = new Date();
+        let h = day.getHours() % 12
+        let m = day.getMinutes()
+        let s = day.getSeconds()
+        context.rotate(2 * Math.PI / 12 * h + 2 * Math.PI / 12 * (m / 60) - Math.PI / 2);
+        context.beginPath();
+        context.lineWidth = 5;
+
+        context.moveTo(0, 0);
+        context.lineTo(30, 0);
+        context.stroke();
+        // 分
+        context.beginPath();
+        context.rotate(2 * Math.PI / 60 * m + 2 * Math.PI / 60 * (s / 60) - Math.PI / 2);
+
+        context.lineWidth = 3;
+        context.strokeStyle = 'red';
+
+
+        context.moveTo(0, 0);
+        context.lineTo(40, 0);
+        context.stroke();
+        // 秒
+        context.beginPath();
+        //计算时针的旋转角度
+        context.rotate(2 * Math.PI / 60 * s - Math.PI / 2);
+
+        context.lineWidth = 2;
+        context.strokeStyle = 'green';
+
+
+        context.moveTo(0, 0);
+        context.lineTo(45, 0);
+        context.stroke();
+        context.restore();
+        context.restore();
+    }, 1000);
+</script>
+
+</html>

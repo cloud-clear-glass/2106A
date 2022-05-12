@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a p {
+            width: 80px;
+            height: 50px;
+            background-color: #000;
+            border-radius: 50%;
+        }
+
+        .b p {
+            width: 0;
+            height: 0;
+            border-bottom: 50px solid #ccc;
+            border-left: 50px solid transparent;
+            transform: rotate(-135deg);
+        }
+
+        .c p {
+            width: 0;
+            height: 0;
+            border-top: 50px solid #ccc;
+            border-right: 50px solid transparent;
+        }
+
+        .d h1 {
+            width: 20px;
+            height: 15px;
+            border-radius: 50%;
+            margin: 0;
+            padding: 0;
+            box-shadow: 3px -2px 0 2px red;
+            position: relative;
+        }
+
+        .d h1::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            border-bottom: 12px solid red;
+            height: 0;
+            border-right: 12px solid transparent;
+            position: absolute;
+            bottom: -3px;
+            right: -4px;
+            transform: rotate(-4deg);
+        }
+
+        .d h2 {
+            width: 30px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 20px 0 0;
+            padding: 0;
+            box-shadow: 4px 2px 0 2px red;
+            position: relative
+        }
+
+        .d h2::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            border-bottom: 15px solid red;
+            height: 0;
+            border-right: 15px solid transparent;
+            position: absolute;
+            bottom: -9px;
+            left: 6px;
+            transform: rotate(60deg);
+        }
+
+        .e {
+            position: relative;
+        }
+
+        .e p {
+            width: 0;
+            height: 0;
+            margin: 0;
+            border-top: 50px solid red;
+            border-left: 50px solid transparent;
+            transform: rotate(-45deg);
+        }
+
+        .e h2 {
+            margin: 0;
+            border-top: 80px solid red;
+            border-left: 40px solid transparent;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 46px;
+            left: -13px;
+        }
+
+        .e h2::after {
+            content: '';
+            border-bottom: 35px solid red;
+            border-right: 81px solid transparent;
+            display: inline-block;
+            transform: rotate(90deg);
+            position: absolute;
+            top: -57px;
+            right: -58px;
+        }
+
+        .f {
+            margin-top: 50px;
+        }
+
+        .f p {
+            width: 50px;
+            height: 0;
+            border-bottom: 50px solid #000;
+            border-right: 50px solid transparent;
+            border-left: 50px solid transparent;
+        }
+
+        .g {
+            position: relative;
+        }
+
+        .g p {
+            width: 50px;
+            height: 0;
+            border-bottom: 50px solid #000;
+            border-right: 50px solid transparent;
+            border-left: 50px solid transparent;
+        }
+
+        .g p::after {
+            content: '';
+            display: inline-block;
+            width: 0px;
+            height: 0px;
+            border-top: 110px solid;
+            border-left: 105px solid transparent;
+            position: absolute;
+            top: 32px;
+            left: 23px;
+            transform: rotate(134deg);
+        }
+
+        .h {
+            margin-top: 70px;
+            position: relative;
+        }
+
+        .h p {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .h p::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-right: 50px solid #fff;
+            border-bottom: 50px solid transparent;
+            position: absolute;
+            top: 60px;
+            left: 76px;
+            transform: rotate(-134deg);
+        }
+
+        .i {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .i p {
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: red;
+            margin-left: 30px;
+        }
+
+        .i p::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-bottom: 13px solid red;
+            border-left: 21px solid transparent;
+            transform: rotate(-344deg);
+            position: absolute;
+            top: 42px;
+            left: 15px;
+        }
+
+        .j {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .j p {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        .j h2 {
+            margin: 0;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 37px;
+            left: 0px;
+            transform: rotate(22deg);
+        }
+
+        .j h3 {
+            margin: 0;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 37px;
+            left: 0px;
+            transform: rotate(63deg);
+        }
+
+        .k {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .k p {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .k p::after {
+            content: '';
+            position: absolute;
+            border-bottom: 40px solid red;
+            border-left: 15px solid transparent;
+            border-right: 10px solid transparent;
+            top: 69px;
+            left: 21px;
+            transform: rotate(155deg);
+        }
+
+        .k p::before {
+            content: '';
+            position: absolute;
+            border-bottom: 40px solid red;
+            border-left: 15px solid transparent;
+            border-right: 10px solid transparent;
+            top: 71px;
+            left: 6px;
+            transform: rotate(204deg);
+        }
+
+        .l {
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .l p {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .l p span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .l p::after {
+            content: '';
+            display: inline-block;
+            width: 26px;
+            height: 5px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 36px;
+            transform: rotate(45deg);
+        }
+
+        .m {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .m p {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 70px solid red;
+            border-radius: 49%;
+        }
+
+        .n {
+            margin-top: 30px;
+        }
+
+        .n p {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            box-shadow: 5px 5px 0px 0px red;
+        }
+
+        .o {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .o p {
+            width: 50px;
+            height: 10px;
+            background-color: red;
+        }
+
+        .o p::after {
+            content: '';
+            display: inline-block;
+            width: 50px;
+            height: 10px;
+            background-color: red;
+            transform: rotate(90deg);
+            position: relative;
+            top: -6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <!-- 没啥说的 -->
+        椭圆
+        <p></p>
+    </div>
+    <div class="b">
+        三角
+        两条边，然后旋转
+        <p></p>
+    </div>
+    <div class="c">
+        左上三角,两条边
+        <p></p>
+    </div>
+    <div class="d">
+        弯尾箭头,直接用伪元素做三角调整角度
+        <h1></h1>
+        <h2></h2>
+    </div>
+    <div class="e">
+        钻石盾牌,三个三角形即可
+        <p></p>
+        <h2></h2>
+    </div>
+    <div class="f">
+        梯形
+        <!-- 没啥好说的 -->
+        <p></p>
+    </div>
+    <div class="g">
+        砖石形,两个三角
+        <p></p>
+    </div>
+    <div class="h">
+        吃豆人,圆形＋白三角
+        <p></p>
+    </div>
+    <div class="i">
+        聊天框，三角+长方形
+        <p></p>
+    </div>
+    <div class="j">
+        爆炸形状,定位+三个正方形
+        <p></p>
+        <h2></h2>
+        <h3></h3>
+    </div>
+    <div class="k">
+        徽章丝带，圆形+两个三角
+        <p></p>
+    </div>
+    <div class="l">
+        放大镜,圆+长方形
+        <p>
+            <span></span>
+        </p>
+    </div>
+    <div class="m">
+        圆锥形,三角+border-radius,不能超过50不然会变肥
+        <p></p>
+    </div>
+    <div class="n">
+        月亮, 圆形+阴影
+        <p></p>
+    </div>
+    <div class="o">
+        十字架,两个长方形
+        <p></p>
+    </div>
+</body>
+
+</html>

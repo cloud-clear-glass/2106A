@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            border: 1px solid red;
+        }
+
+        .p {
+            position: absolute;
+            width: 800px;
+            height: 300px;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas style="width:800px;height: 300px;" id="box"></canvas>
+    <p class="p">恭喜你中奖了</p>
+</body>
+<script>
+    let cas = document.querySelector('#box')
+    const context = cas.getContext('2d');
+    context.fillStyle = '#ccc';
+    context.fillRect(0, 0, 300, 150);
+    context.font = '20px sans-serif';
+    context.textAlign = 'center';
+    context.fillStyle = '#fff';
+
+    context.fillText('刮刮有惊喜哦!', cas.width / 2, cas.height / 2);
+    context.fill();
+
+    let flag = false;
+    cas.addEventListener('mousedown', function () {
+        flag = true;
+    }, false)
+    cas.addEventListener('mousemove', function (e) {
+        if (flag) {
+            let x = e.clientX - cas.offsetLeft
+            let y = e.clientY - cas.offsetTop
+
+            context.beginPath();
+            context.globalCompositeOperation = 'destination-out';
+            context.arc(x, y, 5, Math.PI / 180 * 0, Math.PI / 180 * 360, false);
+
+            context.stroke();
+
+        }
+    }, false)
+    cas.addEventListener('mouseup', function () {
+        flag = false
+    }, false)
+</script>
+
+</html>
