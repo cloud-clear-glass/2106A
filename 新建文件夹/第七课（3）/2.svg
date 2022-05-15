@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" height='800' width='800'>
+    <line x1="0" y1="0" x2="0" y2="300" stroke="red" stroke-width="1" />
+    <line x1="0" y1="300" x2="400" y2="300" stroke="red" stroke-width="1" />
+    <rect x="50" y="250" width="10" height="50" style="stroke:red;fill:red" />
+    <rect x="150" y="200" width="10" height="100" style="stroke:green;fill:green" />
+    <rect x="250" y="150" width="10" height="150" style="stroke:pink;fill:pink" />
+</svg>

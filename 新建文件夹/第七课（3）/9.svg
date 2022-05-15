@@ -1,0 +1,11 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <g id="Layer_1">
+        <title>Layer 1</title>
+        <path id="svg_6"
+            d="m345.41009,127.02194c0,0 -107,75 -107.41009,74.97806c0.41009,0.02194 203.41009,0.02194 203,0"
+            opacity="NaN" stroke="#ff0000" fill="#ff0000" />
+        <path transform="matrix(1 0 0 1 0 0)" id="svg_9"
+            d="m237.41009,202.02194c0,0 90,189 90,189c0,0 113,-190 112.58991,-190.02194" opacity="NaN" stroke="#ff0000"
+            fill="#ff0000" />
+    </g>
+</svg>

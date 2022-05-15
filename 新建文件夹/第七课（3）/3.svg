@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="800" width="800">
+    <ellipse cx="400" cy="400" rx="200" ry="400" style="fill:red" />
+    <ellipse cx="300" cy="300" rx="20" ry="40" style="fill:green" />
+    <ellipse cx="500" cy="300" rx="20" ry="40" style="fill:pink" />
+    <ellipse cx="400" cy="600" rx="100" ry="40" style="fill:green" />
+</svg>

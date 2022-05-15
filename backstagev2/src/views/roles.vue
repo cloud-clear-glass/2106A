@@ -55,26 +55,89 @@
         <el-table-column label="角色描述" prop="roleDesc"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button
-              type="primary"
-              size="mini"
-              icon="el-icon-edit"
-              @click="openEdit(scope.row)"
+            <el-button type="primary" size="mini" @click="openEdit(scope.row)"
+              ><svg
+                t="1652615098815"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="10161"
+                width="16"
+                height="16"
+              >
+                <path
+                  d="M546.133333 128l243.2 243.2-371.2 371.2H170.666667v-243.2L546.133333 128zM213.333333 516.266667v179.2h179.2L725.333333 371.2l-179.2-179.2L213.333333 516.266667z m-42.666666 311.466666h128v42.666667H170.666667v-42.666667z m170.666666 0h213.333334v42.666667H341.333333v-42.666667z m256 0h298.666667v42.666667h-298.666667v-42.666667z"
+                  fill="#ffffff"
+                  p-id="10162"
+                ></path></svg
               >编辑</el-button
             >
             <el-button
               type="danger"
               size="mini"
-              icon="el-icon-delete"
               @click="deleteRoles(scope.row)"
-              >删除</el-button
+            >
+              <svg
+                t="1652615285881"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="11087"
+                width="16"
+                height="16"
+              >
+                <path
+                  d="M106.666667 213.333333h810.666666v42.666667H106.666667z"
+                  fill="#ffffff"
+                  p-id="11088"
+                ></path>
+                <path
+                  d="M640 128v42.666667h42.666667V128c0-23.573333-19.093333-42.666667-42.538667-42.666667H383.872A42.496 42.496 0 0 0 341.333333 128v42.666667h42.666667V128h256z"
+                  fill="#ffffff"
+                  p-id="11089"
+                ></path>
+                <path
+                  d="M213.333333 896V256H170.666667v639.957333C170.666667 919.552 189.653333 938.666667 213.376 938.666667h597.248C834.218667 938.666667 853.333333 919.68 853.333333 895.957333V256h-42.666666v640H213.333333z"
+                  fill="#ffffff"
+                  p-id="11090"
+                ></path>
+                <path
+                  d="M320 341.333333h42.666667v384h-42.666667zM490.666667 341.333333h42.666666v384h-42.666666zM661.333333 341.333333h42.666667v384h-42.666667z"
+                  fill="#ffffff"
+                  p-id="11091"
+                ></path>
+              </svg>
+              删除</el-button
             >
             <el-button
               type="warning"
               size="mini"
-              icon="el-icon-tools"
               @click="openrights(scope.row)"
-              >分配权限</el-button
+            >
+              <svg
+                t="1652615408986"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="12724"
+                width="16"
+                height="16"
+              >
+                <path
+                  d="M880.288 232.48L560.192 45.12a95.648 95.648 0 0 0-96.64 0L143.68 232.48A96.64 96.64 0 0 0 96 315.904v397.664c0 34.784 18.624 66.88 48.736 84l320 181.92a95.52 95.52 0 0 0 94.496 0l320-181.92A96.576 96.576 0 0 0 928 713.568V315.904a96.64 96.64 0 0 0-47.712-83.424zM864 713.568c0 11.584-6.208 22.304-16.256 28l-320 181.92a31.776 31.776 0 0 1-31.488 0l-320-181.92A32.192 32.192 0 0 1 160 713.568V315.904c0-11.456 6.048-22.048 15.904-27.808l319.872-187.36a31.84 31.84 0 0 1 32.192 0l320.128 187.392c9.856 5.728 15.904 16.32 15.904 27.776v397.664z"
+                  p-id="12725"
+                  fill="#ffffff"
+                ></path>
+                <path
+                  d="M512 320a192 192 0 1 0 0 384 192 192 0 0 0 0-384z m0 320a128 128 0 1 1 0-256 128 128 0 0 1 0 256z"
+                  p-id="12726"
+                  fill="#ffffff"
+                ></path>
+              </svg>
+              分配权限</el-button
             >
           </template>
         </el-table-column>

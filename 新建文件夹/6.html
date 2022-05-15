@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 200px;
+            width: 500px;
+            margin: 50px auto;
+            border: 1px solid #00ffff;
+        }
+
+        .top {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            border-bottom: 1px solid #00ffff;
+            color: #00ffff;
+            text-align: center;
+        }
+
+        .xx {
+            width: 100%;
+            text-align: center;
+        }
+
+        .xx1 {
+            display: inline-block;
+            width: 50px;
+        }
+
+        input {
+            margin-left: 15px;
+        }
+
+        button {
+            width: 70px;
+            height: 30px;
+            text-align: center;
+            border: none;
+            background: #00ffff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            <span>用户登录</span>
+        </div>
+        <div class="xx">
+            <p><span class="xx1">用户名</span><input type="text"></p>
+            <p><span class="xx1">密码</span><input type="text"></p>
+            <button>登录</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        var input = document.querySelectorAll('input')
+        var btn = document.querySelector('button')
+        for (var i = 0; i <= input.length; i++) {
+            let a = i
+            input[i].onfocus = function () {
+                input[a].style.background = '#00ffff'
+            }
+            input[i].onblur = function () {
+                input[a].style.background = '#fff'
+            }
+        }
+    }
+</script>
