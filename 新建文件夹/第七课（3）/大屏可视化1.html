@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background: url('../第七课（3）/大屏可视化素材图/素材图/index_bg.png') no-repeat;
+        }
+
+        .box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .center {
+            width: 40%;
+        }
+
+        .left,
+        .right {
+            width: 30%;
+            height: 100%;
+            border: 1px solid red;
+        }
+
+        .right {
+            padding: 10px 0;
+        }
+
+        .left_top {
+            width: 100%;
+            background: url('./大屏可视化素材图/素材图/border_bg01.png') no-repeat;
+            background-size: 100% 100%;
+            overflow: hidden;
+        }
+
+        .left_top p {
+            text-align: center;
+            color: #0695eb;
+            margin-top: 20px;
+        }
+
+        .left_top h1 {
+            margin: 0;
+            font-weight: normal;
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .left_c {
+            height: 300px;
+            width: 100%;
+            background: url('./大屏可视化素材图//素材图/box_title.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .left_c p {
+            text-align: center;
+            color: #fff;
+            line-height: 35px;
+        }
+
+        .left_c_echarts {
+            width: 100%;
+            height: 270px;
+        }
+
+        .left_r {
+            background: url('./大屏可视化素材图//素材图/box_title.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .left_r p {
+            text-align: center;
+            color: #fff;
+            line-height: 35px;
+        }
+
+        .left_r table {
+            width: 100%;
+            margin-top: 8px;
+            color: #b0c8e4;
+            text-align: center;
+        }
+
+        .left_r table td {
+            width: 80px;
+            line-height: 50px;
+            border: 1px solid #124f7b;
+        }
+
+        .c_t {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .c_t_1 {
+            width: 100%;
+            height: 30%;
+            background: url('./大屏可视化素材图/素材图/title_border.png') no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .c_t_1 p {
+            text-align: center;
+            line-height: 100px;
+            font-size: 24px;
+            color: #fff;
+            vertical-align: middle;
+        }
+
+        .c_t_1 p img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        .c_t_2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 0 12px;
+        }
+
+        .c_t_2_l {
+            width: 60%;
+            height: 120px;
+            border: 1px solid #0f6dab;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .c_t_2_l img {
+            width: 50px;
+            height: 50px;
+            margin: 4px;
+        }
+
+        .c_t_2_l_1 {
+            width: 50%;
+            text-align: center;
+            color: #cbd3df;
+            border-right: 1px solid #cbd3df;
+        }
+
+        .c_t_2_l_1 p {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .c_t_2_l_1 span {
+            font-size: 12px;
+        }
+
+        .c_t_2_l_2 {
+            color: #cbd3df;
+            margin-right: 5px;
+        }
+
+        .c_t_2_l_2 h6 {
+            font-weight: normal;
+
+        }
+
+        .c_img {
+            width: 10px;
+            margin: 0 10px;
+        }
+
+        .c_t_2_r {
+            width: 37%;
+            height: 100%;
+            padding: 20px 4px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .c_t_2_r p {
+            font-size: 12px;
+        }
+
+        .right_t {
+            width: 100%;
+            background: url('./大屏可视化素材图/素材图/box_title.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .right_t p {
+            text-align: center;
+            line-height: 35px;
+            color: #fff;
+        }
+
+        .right_span {
+            display: block;
+            text-align: right;
+            margin-right: 10px;
+            margin-top: 5px;
+            color: #c8d8f1;
+        }
+
+        .r_t {
+            width: 100%;
+            height: 280px;
+        }
+
+        .r_c {
+            width: 100%;
+            height: 250px;
+        }
+
+        .r_f {
+            width: 100%;
+            height: 250px;
+        }
+
+        .c_f {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="left">
+            <div style="height: 150px;" class="left_top">
+                <p>// 当前比对数据 // </p>
+                <h1>3,456,789</h1>
+            </div>
+            <div class="left_c">
+                <p>违法犯罪人员分析</p>
+                <div class="left_c_echarts"></div>
+            </div>
+            <div class="left_r">
+                <p>人口出入记录</p>
+                <table border="0" cellspacing="0">
+                    <tr style="background: #124f7b; line-height:30px;">
+                        <th>姓名</th>
+                        <th>角色</th>
+                        <th>开门方式</th>
+                        <th>时间</th>
+                    </tr>
+                    <tr>
+                        <td>张梦</td>
+                        <td>访客</td>
+                        <td>人脸</td>
+                        <td>2018-11-01 13:51:23</td>
+                    </tr>
+                    <tr>
+                        <td>李阳荣</td>
+                        <td>业主</td>
+                        <td>APP</td>
+                        <td>2018-11-01 13:51:23</td>
+                    </tr>
+                    <tr>
+                        <td>张无双</td>
+                        <td>访客</td>
+                        <td>人脸</td>
+                        <td>2018-11-01 13:51:23</td>
+                    </tr>
+                    <tr>
+                        <td>李阳</td>
+                        <td>业主</td>
+                        <td>APP</td>
+                        <td>2018-11-01 13:51:23</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="center">
+            <div class="c_t">
+                <div class="c_t_1">
+                    <p> <img src="./大屏可视化素材图//素材图/police.ico" alt="">
+                        智慧社区内网比对平台</p>
+                </div>
+                <div class="c_t_2">
+                    <div class="c_t_2_l">
+                        <div class="c_t_2_l_1">
+                            <p>16:19:50</p>
+                            <span>2020/1/21 &nbsp;pm 周二</span>
+                        </div>
+                        <img src="./大屏可视化素材图/素材图/weather/weather_img01.png" alt="">
+                        <div class="c_t_2_l_2">
+                            <p>多云</p>
+                            <h6>16·22℃</h6>
+                            <h6>天津市和平区</h6>
+                        </div>
+                    </div>
+                    <img src="./大屏可视化素材图/素材图/line_bg.png" alt="" class="c_img">
+                    <div class="c_t_2_r">
+                        <p style="color:#f3e80f">NO.1北京：2543289人</p>
+                        <p style="color:#7bfc00">NO.1天津：5690人</p>
+                        <p style="color:#68f5c8">NO.1河北：456人</p>
+                    </div>
+                </div>
+            </div>
+            <div class="c_f"></div>
+        </div>
+        <div class="right">
+            <div class="right_t">
+                <p>违法犯罪人员分析</p>
+                <span class="right_span">单位：岁</span>
+                <div class="r_t"></div>
+            </div>
+            <div class="right_t">
+                <p>违法犯罪人员地区分布</p>
+                <div class="r_c"></div>
+            </div>
+            <div class="right_t">
+                <p>人口出入时间段统计</p>
+                <div class="r_f"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../echarts.min.js"></script>
+<script src="./china.js"></script>
+<script>
+    // 左边第一个
+    let div1 = document.querySelector('.left_c_echarts')
+    let left1 = echarts.init(div1, 'dark')
+    let left1Data = {
+        tooltip: {},
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            y: 'top'
+        },
+        color: ['#c1232b', '#27727b', '#fcce10', '#e87c25', '#b5c334'],
+        series: {
+            type: 'pie',
+            radius: '60%',
+            data: [{
+                    name: '卖淫嫖娼',
+                    value: 100
+                },
+                {
+                    name: '经侦嫌疑',
+                    value: 100
+                },
+                {
+                    name: '重点人口',
+                    value: 80
+                },
+                {
+                    name: '刑侦重点',
+                    value: 30
+                },
+                {
+                    name: '吸毒人口',
+                    value: 370
+                },
+            ],
+        }
+
+    }
+    left1.setOption(left1Data)
+    let div2 = document.querySelector('.r_t')
+    let right1 = echarts.init(div2, 'dark')
+    let right1Data = {
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            y: 'top'
+        },
+        tooltip: {},
+        series: {
+            type: 'pie',
+            radius: ['30%', '60%'],
+            color: ['#c1232b', '#27727b', '#fcce10', '#e87c25', '#b5c334', '#fe8463'],
+            label: {
+                normal: {
+                    show: false,
+                }
+
+            },
+            data: [{
+                    name: '18-30',
+                    value: 60
+                },
+                {
+                    name: '31-40',
+                    value: 60
+                },
+                {
+                    name: '41-50',
+                    value: 50
+                },
+                {
+                    name: '51-60',
+                    value: 30
+                },
+                {
+                    name: '65岁以上',
+                    value: 25
+                },
+                {
+                    name: '未标明',
+                    value: 330
+                },
+            ]
+        }
+    }
+    right1.setOption(right1Data)
+    let div3 = document.querySelector('.r_c')
+    let right2 = echarts.init(div3, 'dark')
+    let right2Data = {
+        tooltip: {},
+        xAxis: {
+            data: ['河北', '天津', '北京', '新疆', '内蒙', '宁夏', '海南']
+        },
+        textStyle: {
+            color: '#fadb71'
+        },
+        yAxis: {
+
+        },
+        series: {
+            type: 'bar',
+            data: [20, 50, 200, 310, 399, 320, 210],
+            itemStyle: {
+                color: '#fadb71'
+            },
+
+        }
+    }
+    right2.setOption(right2Data)
+    let div4 = document.querySelector('.r_f')
+    let right3 = echarts.init(div4)
+    let right3Data = {
+        tooltip: {},
+
+        xAxis: {
+            data: ['6:00-9:00', '10:00-12:00', '13:00-15:00', '16:00-20:00', '21:00-24:00']
+        },
+        textStyle: {
+            color: '#6ad10e'
+        },
+        yAxis: {},
+        series: {
+            type: 'line',
+            data: [800, 300, 500, 800, 300],
+            lineStyle: {
+                color: '#6ad10e'
+            },
+            smooth: true
+        }
+    }
+    right3.setOption(right3Data)
+    let div5 = document.querySelector('.c_f')
+    let center1 = echarts.init(div5)
+    let center1Data = {
+
+        tooltip: { //这里设置提示框
+            trigger: 'item', //数据项图形触发
+            backgroundColor: "red", //提示框浮层的背景颜色。
+            //字符串模板(地图): {a}（系列名称），{b}（区域名称），{c}（合并数值）,{d}（无）
+            formatter: '地区：{b}<br/>模拟数据：{c}'
+        },
+        visualMap: { //视觉映射组件
+            top: 'center',
+            left: 'left',
+            min: 10,
+            max: 500000,
+            text: ['High', 'Low'],
+            realtime: false, //拖拽时，是否实时更新
+            calculable: true, //是否显示拖拽用的手柄
+            inRange: {
+                color: ['lightskyblue', 'yellow', 'orangered']
+            }
+        },
+        series: [{
+            name: '模拟数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false, //是否开启鼠标缩放和平移漫游
+            itemStyle: { //地图区域的多边形 图形样式
+                normal: { //是图形在默认状态下的样式
+                    label: {
+                        show: true, //是否显示标签
+                        textStyle: {
+                            color: "black"
+                        }
+                    }
+                },
+                zoom: 1.5, //地图缩放比例,默认为1
+                emphasis: { //是图形在高亮状态下的样式,比如在鼠标悬浮或者图例联动高亮时
+                    label: {
+                        show: true
+                    }
+                }
+            },
+            top: "3%", //组件距离容器的距离
+            data: [{
+                    name: '北京',
+                    value: 350000
+                },
+                {
+                    name: '天津',
+                    value: 120000
+                },
+                {
+                    name: '上海',
+                    value: 300000
+                },
+                {
+                    name: '重庆',
+                    value: 92000
+                },
+                {
+                    name: '河北',
+                    value: 25000
+                },
+                {
+                    name: '河南',
+                    value: 20000
+                },
+                {
+                    name: '云南',
+                    value: 500
+                },
+                {
+                    name: '辽宁',
+                    value: 3050
+                },
+                {
+                    name: '黑龙江',
+                    value: 80000
+                },
+                {
+                    name: '湖南',
+                    value: 2000
+                },
+                {
+                    name: '安徽',
+                    value: 24580
+                },
+                {
+                    name: '山东',
+                    value: 40629
+                },
+                {
+                    name: '新疆',
+                    value: 36981
+                },
+                {
+                    name: '江苏',
+                    value: 13569
+                },
+                {
+                    name: '浙江',
+                    value: 24956
+                },
+                {
+                    name: '江西',
+                    value: 15194
+                },
+                {
+                    name: '湖北',
+                    value: 41398
+                },
+                {
+                    name: '广西',
+                    value: 41150
+                },
+                {
+                    name: '甘肃',
+                    value: 17630
+                },
+                {
+                    name: '山西',
+                    value: 27370
+                },
+                {
+                    name: '内蒙古',
+                    value: 27370
+                },
+                {
+                    name: '陕西',
+                    value: 97208
+                },
+                {
+                    name: '吉林',
+                    value: 88290
+                },
+                {
+                    name: '福建',
+                    value: 19978
+                },
+                {
+                    name: '贵州',
+                    value: 94485
+                },
+                {
+                    name: '广东',
+                    value: 89426
+                },
+                {
+                    name: '青海',
+                    value: 35484
+                },
+                {
+                    name: '西藏',
+                    value: 97413
+                },
+                {
+                    name: '四川',
+                    value: 54161
+                },
+                {
+                    name: '宁夏',
+                    value: 56515
+                },
+                {
+                    name: '海南',
+                    value: 54871
+                },
+                {
+                    name: '台湾',
+                    value: 48544
+                },
+                {
+                    name: '香港',
+                    value: 49474
+                },
+                {
+                    name: '澳门',
+                    value: 34594
+                }
+            ]
+        }]
+    };
+    center1.setOption(center1Data)
+</script>
+
+</html>

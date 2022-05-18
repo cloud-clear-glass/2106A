@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script src="../echarts.min.js"></script>
+<script src="./echarts-gl.min.js"></script>
+<script>
+    var ROOT_PATH =
+        'https://fastly.jsdelivr.net/gh/apache/echarts-website@asf-site/examples'
+    let div = document.querySelector('.box')
+    let a = echarts.init(div)
+    let option = {
+        backgroundColor: '#000',
+        globe: {
+            baseTexture: ROOT_PATH + '/data-gl/asset/world.topo.bathy.200401.jpg',
+            heightTexture: ROOT_PATH + '/data-gl/asset/world.topo.bathy.200401.jpg',
+            displacementScale: 0.04,
+            shading: 'realistic',
+            environment: ROOT_PATH + '/data-gl/asset/starfield.jpg',
+            realisticMaterial: {
+                roughness: 0.9
+            },
+            postEffect: {
+                enable: true
+            },
+            light: {
+                main: {
+                    intensity: 5,
+                    shadow: true
+                },
+                ambientCubemap: {
+                    texture: ROOT_PATH + '/data-gl/asset/pisa.hdr',
+                    diffuseIntensity: 0.2
+                }
+            }
+        }
+    };
+    a.setOption(option);
+</script>
+
+</html>

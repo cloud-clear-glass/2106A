@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #my {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="my" style="width:800px; height:400px"></div>
+</body>
+<script src="./echarts.min.js"></script>
+<script>
+    let m = document.querySelector('#my')
+    let s = echarts.init(m)
+    option = {
+        title: {
+            text: '柱状图和折线图',
+            subtext: '练习'
+        },
+        xAxis: {
+            data: ['5-16', '5-15', '5-14', '5-13', '5-12', '5-11', '5-10']
+        },
+        yAxis: [{},
+            {
+
+            }
+        ],
+        dataset: [{
+                source: [
+                    ['5-16', 100, 100, '11', 50],
+                    ['5-15', 200, 200, '22', 100],
+                    ['5-14', 300, 300, '33', 150],
+                    ['5-13', 400, 400, ],
+                    ['5-12', 500, 500, ],
+                    ['5-11', 600, 600, ],
+                    ['5-10', 300, 300, ],
+                ]
+            },
+
+        ],
+        legend: {
+            type: 'plain'
+        },
+        series: [{
+
+                type: 'line',
+                encode: {
+                    x: 0,
+                    y: 1,
+                }
+
+            },
+            {
+                type: 'bar',
+                encode: {
+                    x: 0,
+                    y: 2
+                }
+            },
+            {
+                type: 'pie',
+                radius: '20%',
+                center: ['85%', '10%'],
+                encode: {
+                    itemName: 3,
+                    value: 4
+                }
+            },
+
+        ]
+    }
+    s.setOption(option)
+</script>
+
+</html>
